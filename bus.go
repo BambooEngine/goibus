@@ -38,8 +38,8 @@ func (bus *Bus) RequestName(name string, flags dbus.RequestNameFlags) (dbus.Requ
 	return bus.dbusConn.RequestName(name, flags)
 }
 
-func (bus *Bus) RegisterComponent(component *Component) {
-	bus.CallMethod("RegisterComponent", 0, dbus.MakeVariant(component))
+func (bus *Bus) RegisterComponent(component *Component) *dbus.Call {
+	return bus.CallMethod("RegisterComponent", 0, dbus.MakeVariant(component))
 }
 
 func (bus *Bus) GetDbusConn() *dbus.Conn {
